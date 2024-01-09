@@ -1,0 +1,35 @@
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key |sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg
+sudo sh -c 'echo deb [signed-by=/usr/share/... by Sainikhil Kothakonda
+2:53 PM
+Sainikhil Kothakonda
+sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins.gpg] http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt update by Sainikhil Kothakonda
+2:54 PM
+Sainikhil Kothakonda
+sudo apt update
+sudo apt install jenkins by Sainikhil Kothakonda
+2:54 PM
+Sainikhil Kothakonda
+sudo apt install jenkins
+sudo systemctl start jenkins.service by Sainikhil Kothakonda
+2:55 PM
+Sainikhil Kothakonda
+sudo systemctl start jenkins.service
+sudo systemctl status jenkins by Sainikhil Kothakonda
+2:55 PM
+Sainikhil Kothakonda
+sudo systemctl status jenkins
+sudo ufw allow 8080 by Sainikhil Kothakonda
+2:55 PM
+Sainikhil Kothakonda
+sudo ufw allow 8080
+sudo ufw allow OpenSSH sudo ufw enable by Sainikhil Kothakonda
+2:56 PM
+Sainikhil Kothakonda
+sudo ufw allow OpenSSH
+sudo ufw enable
+sudo ufw status by Sainikhil Kothakonda
+2:56 PM
+Sainikhil Kothakonda
+sudo ufw status
+has context menu
