@@ -1,0 +1,46 @@
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key |sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg
+
+sudo sh -c 'echo deb [trusted=true] http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+
+sudo apt update
+sudo apt update
+
+sudo apt install jenkins 
+sudo apt install jenkins
+
+sudo systemctl start jenkins
+sudo systemctl start jenkins
+
+sudo systemctl status jenkins 
+sudo systemctl status jenkins-------------up to this required for installation, if any trouble use further steps 
+
+sudo ufw allow 8080
+sudo ufw allow 8080
+
+sudo ufw allow OpenSSH  
+sudo ufw allow OpenSSH
+
+sudo ufw enable
+
+sudo ufw status 
+sudo ufw status
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>to  start the jenkins use these to commands:
+sudo systemctl start jenkins
+
+sudo systemctl status jenkins 
+-----------------------------------------------
+https://docs.conda.io/projects/miniconda/en/latest/
+>>install Linux:Miniconda Linux 64-bit
+>>then goto Terminal: bash Miniconda3-latest-Linux-x86_64.sh
+enter........then yes....
+reopen the terminal
+conda --version(if yes installed)
+-----------------
+then create a conda environment
+------------------
+conda create --name <minienvi>
+conda activate <minienvi>
+conda install -c conda-forge jupyterlab
+pip install jupyter
+jupyter notebook (the jupyter will be open in webbrowser else the terminal provide the URL copy and paste it in webbrowser ).
