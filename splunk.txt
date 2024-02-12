@@ -1,0 +1,6 @@
+[12:47 PM] Bhanuprasad Kummari
+https://kinneygroup.com/blog/how-to-install-splunk-on-linux/
+[12:49 PM] Bhanuprasad Kummari
+wget -O splunk.tgz "https://download.splunk.com/products/splunk/releases/9.0.3/linux/splunk-9.0.3-dd0128b1f8cd-Linux-x86_64.tgz" 
+sudo -u splunk tar -xvzf splunk.tgz -C /opt 
+sudo -u splunk /opt/splunk/bin/splunk start --accept-license
