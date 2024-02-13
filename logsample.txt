@@ -1,0 +1,107 @@
+package com.infinite.controller;
+ 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+ 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+ 
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+ 
+import com.infinite.hikary.HikariRef;
+ 
+@Controller
+public class Insertvalues {
+	private static final Logger logger= Logger.getLogger(Insertvalues.class);
+	@RequestMapping(value="/insertion",method=RequestMethod.POST)
+	public String insert(HttpServletRequest request, HttpServletResponse response)
+	{
+		String name= request.getParameter("name");
+		String email= request.getParameter("email");
+		String password= request.getParameter("pswd");
+		String date= request.getParameter("dob");
+		String gender= request.getParameter("gender");
+		String profession= request.getParameter("profession");
+		String married= request.getParameter("married");
+		String note= request.getParameter("note");
+		try {
+			DataSource datasource = (DataSource) HikariRef.getDatasource();
+			Connection con = ((javax.sql.DataSource) datasource).getConnection();
+			PreparedStatement pt = con.prepareStatement("insert into user values(?,?,?,?,?,?,?,?);");
+			pt.setString(1, name);
+			pt.setString(2, email);
+			pt.setString(3, password);
+			pt.setString(4, date);
+			pt.setString(5, gender);
+			pt.setString(6, profession);
+			pt.setString(7, married);
+			pt.setString(8, note);
+			int x = pt.executeUpdate();
+			if(x!=0)
+				return "login.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "fail";
+	}
+}
+----------------------------------------------------------------------------------
+
+@Override
+	public List<Product> displayRecords() {
+		// TODO Auto-generated method stub
+		List<Product> ls = null;
+		String msg = null;
+		try {
+			BasicConfigurator.configure();
+			sessionObj = DaoHelper.buildSessionFactory().openSession();
+			tx = sessionObj.beginTransaction();
+			Query q = sessionObj.createQuery("from Product");
+			ls = q.list();
+			tx.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			// Close hibernate session.
+			//sessionObj.close();
+		}
+		return ls;
+
+==============================================================
+[10/29/23 7:13 PM] Shiva Katkam
+//log4j.appender.FILE.File=${log}/log.out
+
+log4j.rootLogger=DEBUG,FILE,console
+
+// Set the appender named X to be a File appender
+
+log4j.appender.FILE=org.apache.log4j.FileAppender
+
+log4j.appender.FILE.File=D:\\logs\\jbackend.log
+
+//log4j.appender.FILE.File=${log}/log.out
+
+log4j.appender.file.MaxFileSize=1MB
+
+log4j.appender.file.MaxBackupIndex=1
+
+// Define the layout for X appender
+
+log4j.appender.FILE.layout=org.apache.log4j.PatternLayout
+
+log4j.appender.FILE.layout.conversionPattern=[%t] %-5p %c %x - %m%n
+ 
+ 
+log4j.appender.console=org.apache.log4j.ConsoleAppender
+
+log4j.appender.console.layout=org.apache.log4j.PatternLayout
+
+log4j.appender.console.layout.ConversionPattern=%L %d [%t] %-5p %c %x - %m%n
+[10/29/23 7:17 PM] Shiva Katkam
+private static final Logger logger= Logger.getLogger(LoginServiceImpl.class);
+[10/29/23 7:17 PM] Shiva Katkam
+BasicConfigurator.configure();
