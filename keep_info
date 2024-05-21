@@ -1,0 +1,143 @@
+
+
+
+>>>>>>>important<<<<<<<<<<<<<<<<<<<<
+
+sudo chown -R 999:999 state || echo "Unable to change directory ownership, changing permissions instead." && sudo chmod -R 0777 state
+>>to change state ownersgip of cmd.
+
+-------------------------------------------
+severity == "critical" && status == "firing"
+======================================================================================
+curl https://raw.githubusercontent.com/keephq/keep/main/start.sh | sh
+curl https://raw.githubusercontent.com/keephq/keep/main/start.sh | sh
+
+
+=======================================================================================
+
+=======================================================================================
+
+curl  -X GET URL -H "Api-Key: XXXX" -d 'PAYLOAD'
+
+
+
+https://api.newrelic.com/v2/applications/$APP_ID/metrics/data.json
+
+https://api.newrelic.com/v2/Avinash/1012495014/metrics/data.json
+
+https://api.newrelic.com/v2/Avinash/1012495014/metrics/data.json
+
+https://api.newrelic.com/v2/Avinash/5255173/metrics/data.json
+
+===========================================================================================
+>>STORAGE ALERT CONDITION:
+
+SELECT average(diskUsedPercent) FROM StorageSample FACET entityName
+
+>>MEMORY ALERT CONDITION:
+
+SELECT average(cpuPercent) FROM SystemSample FACET entityName
+
+>>NETWORK TRAFFIC ALERT CONDITION:
+
+SELECT average(transmitBytesPerSecond) FROM NetworkSample FACET entityName
+
+>>PROCESSOR ID LERT CONDITION:
+
+SELECT average(`processId`) FROM ProcessSample FACET entityName, processDisplayName
+
+====================================================================================================
+
+https://github.com/prometheus/node_exporter/releases/download/v1.8.0/node_exporter-1.8.0.linux-amd64.tar.gz
+
+https://github.com/prometheus/alertmanager/releases/download/v0.27.0/alertmanager-0.27.0.linux-amd64.tar.gz
+
+alertmanager-0.27.0.linux-amd64.tar.gz
+
+=============================================================================================================
+
+
+      ---- token grafana
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+>>>>to run a alertmanager :
+
+
+/usr/local/bin/alertmanager --config.file /etc/alertmanager/alertmanager.yml --storage.path /var/lib/alertmanager/
+
+
+
+#ngrok config add-authtoken 
+#Authtoken saved to configuration file: /home/avinash/snap/ngrok/148/.config/ngrok/ngrok.yml
+
+-----------------------------------------------------------------------------------------------------------
+
+| Error: getaddrinfo EAI_AGAIN keep-backend
+keep-frontend-1          |     at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+keep-frontend-1          |     at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:128:17) {
+keep-frontend-1          |   errno: -3001,
+keep-frontend-1          |   code: 'EAI_AGAIN',
+keep-frontend-1          |   syscall: 'getaddrinfo',
+keep-frontend-1          |   hostname: 'keep-backend'
+keep-frontend-1          | }
+
+=========================================================================================================================
+
+curl -X GET 'https://api.newrelic.com/v2/applications.json'      -H 'Api-Key: xxxxxxxxxx'
+{"applications":[],"links":{"application.servers":"/v2/servers?ids={server_ids}","application.server":"/v2/servers/{server_id}","application.application_hosts":"/v2/application/{application_id}/hosts?ids={host_ids}","application.application_host":"/v2/application/{application_id}/hosts/{host_id}","application.application_instances":"/v2/application/{application_id}/instances?ids={instance_ids}","application.application_instance":"/v2/application/{application_id}/instances/{instance_id}"}}
+
+=======================================================================================================================================================
+
+route:
+  receiver: "keep"
+  group_by: ['alertname']
+  group_wait:      15s
+  group_interval:  15s
+  repeat_interval: 1m
+  continue: true
+
+receivers:
+- name: "keep"
+  webhook_configs:
+  - url: 'http://0.0.0.0:8080/alerts/event/prometheus'
+    send_resolved: true
+    http_config:
+      basic_auth:
+        username: api_key
+        password: xxxxx
+        
+        
+        ======================================================================
+        
+        
+        https://platform.keephq.dev/providers
+        
+        
+        
+       >>>>> java -javaagent:/home/avinash/Project/bankBackend/target/newrelic/newrelic.jar -jar CapstoneProject-0.0.1-SNAPSHOT.jar
+       
+       
+       
+       ==============================================================================================================
+       
+       
+       
+       route:
+  group_by: ['alertname']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 1h
+  receiver: 'web.hook'
+receivers:
+  - name: 'web.hook'
+    webhook_configs:
+      - url: 'http://127.0.0.1:5001/'
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'dev', 'instance']
+
