@@ -1,0 +1,65 @@
+react pipeline script--- 
+
+pipeline {
+    agent any
+
+    stages {
+        stage("git clone") {
+            steps {
+                script {
+                 
+                    deleteDir()
+                    git branch: 'main', url: 'https://github.com/AviNikhil/wallfront.git'
+                }
+            }
+        }
+
+        stage("react install") {
+            steps {
+                script {
+                        sh 'npm install'
+                    
+                }
+            }
+        }
+
+        stage("react run") {
+            steps {
+                script {
+                    sh 'npm start '
+       
+                }
+            }
+        }
+    }
+}
+
+
+
+
+backend pipeline script  ---- 
+
+pipeline {
+  agent any 
+  
+   stages {
+      stage ("git clone") {
+       steps {
+          git 'https://github.com/AviNikhil/wallback.git'
+          }
+          }
+          
+       stage ("maven build") {
+           steps {
+                sh 'mvn clean install'
+                }
+                }
+                 stage ("capstone deployment") {
+                 steps {
+                     sh ' java -jar /var/lib/jenkins/workspace/pipeline/target/CapstoneProject-0.0.1-SNAPSHOT.jar  '
+                 }  
+                }
+                
+                }
+                }
+
